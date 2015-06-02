@@ -5,10 +5,11 @@ import org.apache.camel.Processor;
 import org.apache.camel.component.file.GenericFile;
 
 import twitter4j.Status;
+
 /**
  * Este procesador pasa los tweets a un fichero de texto. Sólo se utilizó como clase para pruebas.
+ * 
  * @author Fco Javier Coira
- *
  */
 class TwitterProcessor
     implements Processor

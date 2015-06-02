@@ -15,13 +15,18 @@ import org.apache.camel.component.twitter.TwitterComponent;
 public class TwitterRouteBuilder
     extends RouteBuilder
 {
+    /**
+     * Cadena utilizada para realizar la búsqueda de estados en Twitter.
+     */
+    private static final String KEY_WORD = "IJornadasdeInformatica";
+
     @Override
     public void configure()
         throws Exception
     {
         initTwitter();
 
-        from( "twitter://search?type=polling&keywords=GameofThrones&delay=100" ).delay( 5000 )
+        from( "twitter://search?type=polling&keywords=" + KEY_WORD + "&delay=100" ).delay( 5000 )
         // procesado de los tweets
         .process( new Twitter2Processor() )
         // filtrado de los mensajes no deseados
@@ -49,7 +54,9 @@ public class TwitterRouteBuilder
         }
         catch ( IOException i )
         {
-            i.printStackTrace();
+            throw new RuntimeException(
+                                        "No se pudo encontrar el fichero con las credenciales para el acceso a Twitter",
+                                        i );
         }
 
         tc.setAccessToken( p.getProperty( "oauth.accessToken" ) );
