@@ -1,4 +1,14 @@
 *.class
+target/
+twitter-example/
+
+# project settings
+.classpath
+.project
+.settings/
+
+# twitter credentials
+src/main/resources/twitter4j.properties
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
