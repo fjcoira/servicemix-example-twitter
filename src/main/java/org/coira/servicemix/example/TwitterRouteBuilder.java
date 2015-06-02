@@ -26,7 +26,7 @@ public class TwitterRouteBuilder
     {
         initTwitter();
 
-        from( "twitter://search?type=polling&keywords=" + KEY_WORD + "&delay=100" ).delay( 5000 )
+        from( "twitter://search?type=polling&keywords=" + KEY_WORD + "&filterOld=true" ).delay( 5000 )
         // procesado de los tweets
         .process( new Twitter2Processor() )
         // filtrado de los mensajes no deseados
